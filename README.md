@@ -5,22 +5,28 @@
 To develop a Recurrent Neural Network model for stock price prediction.
 
 ## Problem Statement and Dataset
-
+1. The given problem is to predict the google stock price based on time.
+2. For this we are provided with a dataset which contains features like Date, Opening Price, Highest Price, Lowest Price, Closing Price, Adjusted Closing, Price and Volume.
+3. Based on the given features, develop a RNN model to predict the price of stocks in future.
 
 ## Design Steps
 
 ### Step 1:
-Write your own steps
-
+Import the required packages
 ### Step 2:
-
+Load the dataset
 ### Step 3:
-
-
+Perform the necessary data preprocessing
+### Step 4:
+Build and fit the data in the Learning model
+### Step 5:
+Predict using the fit model
+### Step 6:
+Check the error value of the predicted pricing model
 
 ## Program
-#### Name:
-#### Register Number:
+#### Name: Ronick Aakshath P
+#### Register Number: 212222240084
 ```
 import numpy as np
 import matplotlib.pyplot as plt
@@ -82,8 +88,10 @@ inputs = dataset_total.values
 inputs = inputs.reshape(-1,1)
 inputs_scaled=sc.transform(inputs)
 X_test = []
+y_test = []
 for i in range(60,1384):
   X_test.append(inputs_scaled[i-60:i,0])
+  y_test.append(inputs_scaled[i,0])
 X_test = np.array(X_test)
 X_test = np.reshape(X_test,(X_test.shape[0], X_test.shape[1],1))
 
@@ -98,6 +106,9 @@ plt.xlabel('Time')
 plt.ylabel('Google Stock Price')
 plt.legend()
 plt.show()
+
+from sklearn.metrics import mean_squared_error as mse
+mse(y_test,predicted_stock_price)
 ```
 ## Output
 
@@ -105,5 +116,7 @@ plt.show()
 ![image](https://github.com/Ronick2005/rnn-stock-price-prediction/assets/83219341/de58c6d4-47a0-4c7a-adc4-99ec5d462a77)
 
 ### Mean Square Error
+![image](https://github.com/Ronick2005/rnn-stock-price-prediction/assets/83219341/c614763a-f8d0-40a9-841e-ce625c1374f4)
 
 ## Result
+Thus, a Recurrent Neural Network model for stock price prediction is developed.
